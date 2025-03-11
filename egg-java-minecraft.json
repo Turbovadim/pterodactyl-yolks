@@ -38,7 +38,7 @@
     "variables": [
         {
             "name": "Server Jar File",
-            "description": "The name of the server jarfile to run the server with.",
+            "description": "Название jar-файла сервера, с которым будет запускаться сервер.",
             "env_variable": "SERVER_JARFILE",
             "default_value": "server.jar",
             "user_viewable": true,
@@ -48,7 +48,7 @@
         },
         {
             "name": "Additional Flags",
-            "description": "This allows switching to additional flags like Aikar's Flags, recommended for usage on all bukkit-based Softwares (for example Paper, Purpur, ...)",
+            "description": "Это позволяет переключиться на дополнительные флаги, такие как Aikar's Flags, которые рекомендуются для использования для серверов основанных на Bukkit (например, Paper, Purpur, ...)",
             "env_variable": "ADDITIONAL_FLAGS",
             "default_value": "None",
             "user_viewable": true,
@@ -58,7 +58,7 @@
         },
         {
             "name": "Maximum Ram Percentage",
-            "description": "Decide how much of your servers ram to allocate for minecraft usage, on heavy modpacks you should keep this a bit lower than usual.",
+            "description": "Определите, сколько оперативной памяти вашего сервера выделить для использования Minecraft. В случае тяжелых модпаков следует оставить немного меньше, чем обычно.",
             "env_variable": "MAXIMUM_RAM",
             "default_value": "90",
             "user_viewable": true,
@@ -78,7 +78,7 @@
         },
         {
             "name": "Java Agent",
-            "description": "ADVANCED FEATURE: Set a custom java agent to use, useful for SWM or similar.",
+            "description": "ПРОДВИНУТАЯ ФУНКЦИЯ: Установите пользовательский Java-агент для использования, полезно для SWM или подобного.",
             "env_variable": "JAVA_AGENT",
             "default_value": "",
             "user_viewable": true,
@@ -88,7 +88,7 @@
         },
         {
             "name": "Override Startup",
-            "description": "ADVANCED FEATURE: Override the displayed startup command to support all other variables, contact support to change.",
+            "description": "ПРОДВИНУТАЯ ФУНКЦИЯ: Перезаписывает отображаемую команду запуска, чтобы поддерживать все другие переменные. Свяжитесь с поддержкой для внесения изменений.",
             "env_variable": "OVERRIDE_STARTUP",
             "default_value": "1",
             "user_viewable": true,
@@ -98,7 +98,7 @@
         },
         {
             "name": "Automatic Updating",
-            "description": "ADVANCED FEATURE: Automatically update your server software to the latest build available for the running version. This does not require using the Version Changer to install it. Do not use on modded servers.",
+            "description": "ПРОДВИНУТАЯ ФУНКЦИЯ: Автоматически обновляйте программное ядро вашего сервера до последней доступной сборки для текущей версии. Не используйте на серверах с модами.",
             "env_variable": "AUTOMATIC_UPDATING",
             "default_value": "0",
             "user_viewable": true,
@@ -118,7 +118,7 @@
         },
         {
             "name": "SIMD Operations Support",
-            "description": "Add Support for SIMD Operations by adding --add-modules=jdk.incubator.vector, used in forks like Pufferfish or Purpur for improved map rendering performance. (Java 16-21)",
+            "description": "Добавьте поддержку операций SIMD, добавив параметр --add-modules=jdk.incubator.vector, который используется в форках, таких как Pufferfish или Purpur, для повышения производительности рендеринга карт. (Java 16-21)",
             "env_variable": "SIMD_OPERATIONS",
             "default_value": "0",
             "user_viewable": true,
@@ -128,7 +128,7 @@
         },
         {
             "name": "Malware Scan",
-            "description": "Toggle running a Malware Scan on Server Startup using https:\/\/github.com\/OpticFusion1\/MCAntiMalware.",
+            "description": "Включает выполнение проверки на наличие вредоносных программ при запуске сервера с использованием https://github.com/OpticFusion1/MCAntiMalware.",
             "env_variable": "MALWARE_SCAN",
             "default_value": "0",
             "user_viewable": true,
