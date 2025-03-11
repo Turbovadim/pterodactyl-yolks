@@ -67,16 +67,6 @@
             "field_type": "text"
         },
         {
-            "name": "Minehut Support",
-            "description": "Enable Minehut Support by adding all requires flags to forward player data.",
-            "env_variable": "MINEHUT_SUPPORT",
-            "default_value": "None",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "required|string|in:None,Velocity,Waterfall,Bukkit",
-            "field_type": "text"
-        },
-        {
             "name": "Log Prefix (Admin Only)",
             "description": "",
             "env_variable": "LOG_PREFIX",
@@ -120,16 +110,6 @@
             "name": "SIMD Operations Support",
             "description": "Add Support for SIMD Operations by adding --add-modules=jdk.incubator.vector, used in forks like Pufferfish or Purpur for improved map rendering performance. (Java 16-21)",
             "env_variable": "SIMD_OPERATIONS",
-            "default_value": "0",
-            "user_viewable": true,
-            "user_editable": true,
-            "rules": "required|boolean",
-            "field_type": "text"
-        },
-        {
-            "name": "Remove Update Warning",
-            "description": "Removes the 20 second spigot update warning by adding -DIReallyKnowWhatIAmDoingISwear to the startup flags",
-            "env_variable": "REMOVE_UPDATE_WARNING",
             "default_value": "0",
             "user_viewable": true,
             "user_editable": true,
