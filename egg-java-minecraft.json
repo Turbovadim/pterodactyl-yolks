@@ -107,6 +107,16 @@
             "field_type": "text"
         },
         {
+            "name": "Ignore Java Version",
+            "description": "Пропускает проверку версии Java при запуске сервера на Paper и его форках.",
+            "env_variable": "IGNORE_JAVA_VERSION",
+            "default_value": "0",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
             "name": "SIMD Operations Support",
             "description": "Add Support for SIMD Operations by adding --add-modules=jdk.incubator.vector, used in forks like Pufferfish or Purpur for improved map rendering performance. (Java 16-21)",
             "env_variable": "SIMD_OPERATIONS",
