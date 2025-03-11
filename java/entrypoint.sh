@@ -222,6 +222,10 @@ if [[ "$OVERRIDE_STARTUP" == "1" ]]; then
 		FLAGS+=("-DIReallyKnowWhatIAmDoingISwear")
 	fi
 
+ 	if [[ "$IGNORE_JAVA_VERSION" == "1" ]]; then
+		FLAGS+=("-DPaper.IgnoreJavaVersion=true")
+	fi
+
 	if [[ -n "$JAVA_AGENT" ]]; then
 		if [ -f "$JAVA_AGENT" ]; then
 			FLAGS+=("-javaagent:$JAVA_AGENT")
