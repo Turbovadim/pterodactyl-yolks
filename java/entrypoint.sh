@@ -214,7 +214,7 @@ if [[ "$OVERRIDE_STARTUP" == "1" ]]; then
 		if [[ "$JAVA_MAJOR_VERSION" -ge 16 ]] && [[ "$JAVA_MAJOR_VERSION" -le 21 ]]; then
 			FLAGS+=("--add-modules=jdk.incubator.vector")
 		else
-			echo -e "${LOG_PREFIX} SIMD Operations are only available for Java 16 - 21, skipping..."
+			echo -e "${LOG_PREFIX} SIMD Operations are only available for Java 16 - 24, skipping..."
 		fi
 	fi
 
