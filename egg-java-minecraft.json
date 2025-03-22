@@ -68,6 +68,16 @@
             "field_type": "text"
         },
         {
+            "name": "TimeZone",
+            "description": "Изменяет временную зону сервера",
+            "env_variable": "TIME_ZONE",
+            "default_value": "Europe/Moscow",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:30",
+            "field_type": "text"
+        },
+        {
             "name": "Log Prefix (Admin Only)",
             "description": "",
             "env_variable": "LOG_PREFIX",

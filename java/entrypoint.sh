@@ -218,6 +218,8 @@ if [[ "$OVERRIDE_STARTUP" == "1" ]]; then
 		fi
 	fi
 
+	FLAGS+=("-Duser.timezone=$TIME_ZONE")
+
 	if [[ "$REMOVE_UPDATE_WARNING" == "1" ]]; then
 		FLAGS+=("-DIReallyKnowWhatIAmDoingISwear")
 	fi
