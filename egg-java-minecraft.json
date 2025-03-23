@@ -138,6 +138,16 @@
             "field_type": "text"
         },
         {
+            "name": "Compact Object Headers",
+            "description": "Компактные заголовки объектов (экспериментальная версия), понижает потребление ОЗУ на ~10%. (Java 24+)",
+            "env_variable": "COMPACT_OBJECT_HEADERS",
+            "default_value": "1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|boolean",
+            "field_type": "text"
+        },
+        {
             "name": "Malware Scan",
             "description": "Включает выполнение проверки на наличие вредоносных программ при запуске сервера с использованием https://github.com/OpticFusion1/MCAntiMalware.",
             "env_variable": "MALWARE_SCAN",

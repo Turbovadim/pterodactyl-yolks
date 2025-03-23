@@ -211,7 +211,7 @@ if [[ "$OVERRIDE_STARTUP" == "1" ]]; then
 
 	# SIMD Operations are only for Java 16 - 21
 	if [[ "$SIMD_OPERATIONS" == "1" ]]; then
-		if [[ "$JAVA_MAJOR_VERSION" -ge 16 ]] && [[ "$JAVA_MAJOR_VERSION" -le 21 ]]; then
+		if [[ "$JAVA_MAJOR_VERSION" -ge 16 ]] && [[ "$JAVA_MAJOR_VERSION" -le 24 ]]; then
 			FLAGS+=("--add-modules=jdk.incubator.vector")
 		else
 			echo -e "${LOG_PREFIX} SIMD Operations are only available for Java 16 - 24, skipping..."
@@ -240,6 +240,25 @@ if [[ "$OVERRIDE_STARTUP" == "1" ]]; then
 		FLAGS+=("-XX:+DisableExplicitGC -XX:+ParallelRefProcEnabled -XX:+PerfDisableSharedMem -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1HeapRegionSize=8M -XX:G1HeapWastePercent=5 -XX:G1MaxNewSizePercent=40 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1NewSizePercent=30 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:G1ReservePercent=20 -XX:InitiatingHeapOccupancyPercent=15 -XX:MaxGCPauseMillis=200 -XX:MaxTenuringThreshold=1 -XX:SurvivorRatio=32 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true")
 	elif [[ "$ADDITIONAL_FLAGS" == "Velocity Flags" ]]; then
 		FLAGS+=("-XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:MaxInlineLevel=15")
+	fi
+
+	if [[ "$COMPACT_OBJECT_HEADERS" == "1" ]]; then
+		if [[ "$JAVA_MAJOR_VERSION" -ge 24 ]]; then
+			flag_found=0
+			for flag in "${FLAGS[@]}"; do
+				if [[ "$flag" == *"-XX:+UnlockExperimentalVMOptions"* ]]; then
+					flag_found=1
+					break
+				fi
+			done
+
+			if [[ $flag_found -eq 0 ]]; then
+				FLAGS+=("-XX:+UnlockExperimentalVMOptions")
+			fi
+			FLAGS+=("-XX:+UseCompactObjectHeaders")
+		else
+			echo -e "${LOG_PREFIX} CompactObjectHeaders is only available for Java 24, skipping..."
+		fi
 	fi
 
 	if [[ "$MINEHUT_SUPPORT" == "Velocity" ]]; then
