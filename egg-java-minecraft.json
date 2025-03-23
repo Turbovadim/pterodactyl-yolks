@@ -141,7 +141,7 @@
             "name": "Compact Object Headers",
             "description": "Компактные заголовки объектов (экспериментальная версия), понижает потребление ОЗУ на ~10%. (Java 24+)",
             "env_variable": "COMPACT_OBJECT_HEADERS",
-            "default_value": "1",
+            "default_value": "0",
             "user_viewable": true,
             "user_editable": true,
             "rules": "required|boolean",
