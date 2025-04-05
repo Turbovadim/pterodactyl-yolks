@@ -240,6 +240,8 @@ if [[ "$OVERRIDE_STARTUP" == "1" ]]; then
 		FLAGS+=("-XX:+DisableExplicitGC -XX:+ParallelRefProcEnabled -XX:+PerfDisableSharedMem -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1HeapRegionSize=8M -XX:G1HeapWastePercent=5 -XX:G1MaxNewSizePercent=40 -XX:G1MixedGCCountTarget=4 -XX:G1MixedGCLiveThresholdPercent=90 -XX:G1NewSizePercent=30 -XX:G1RSetUpdatingPauseTimePercent=5 -XX:G1ReservePercent=20 -XX:InitiatingHeapOccupancyPercent=15 -XX:MaxGCPauseMillis=200 -XX:MaxTenuringThreshold=1 -XX:SurvivorRatio=32 -Dusing.aikars.flags=https://mcflags.emc.gs -Daikars.new.flags=true")
 	elif [[ "$ADDITIONAL_FLAGS" == "Velocity Flags" ]]; then
 		FLAGS+=("-XX:+ParallelRefProcEnabled -XX:+UnlockExperimentalVMOptions -XX:+UseG1GC -XX:G1HeapRegionSize=4M -XX:MaxInlineLevel=15")
+	elif [[ "$ADDITIONAL_FLAGS" == "Basic ZGC Flags" ]]; then
+		FLAGS+=("-XX:+UseZGC -XX:+ZGenerational -XX:+DisableExplicitGC -XX:+PerfDisableSharedMem -XX:+UseCompressedOops -XX:+UseNUMA -XX:ZCollectionInterval=30 -XX:ZAllocationSpikeTolerance=5")
 	fi
 
 	if [[ "$COMPACT_OBJECT_HEADERS" == "1" ]]; then

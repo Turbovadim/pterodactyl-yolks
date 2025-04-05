@@ -54,7 +54,7 @@
             "default_value": "None",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "required|string|in:None,Aikar's Flags,Velocity Flags",
+            "rules": "required|string|in:None,Aikar's Flags,Velocity Flags,Basic ZGC Flags",
             "field_type": "text"
         },
         {
