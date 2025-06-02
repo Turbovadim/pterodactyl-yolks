@@ -1,40 +1,27 @@
-FROM container-registry.oracle.com/graalvm/jdk:24
+FROM        --platform=$TARGETOS/$TARGETARCH ghcr.io/graalvm/jdk-community:24
 
-LABEL author="Robert Jansen" maintainer="rjansengd@gmail.com" \
-      org.opencontainers.image.source="https://github.com/mcjars/pterodactyl-yolks" \
-      org.opencontainers.image.licenses="MIT"
+LABEL       author="Robert Jansen" maintainer="rjansengd@gmail.com"
 
-# Remove disk-writing tools you don’t want
-RUN rm -f /usr/bin/dd /usr/bin/fallocate /usr/bin/truncate /usr/bin/xfs_mkfile
+LABEL       org.opencontainers.image.source="https://github.com/mcjars/pterodactyl-yolks"
+LABEL       org.opencontainers.image.licenses=MIT
 
-# ---- use microdnf instead of apt ----
-RUN microdnf --enablerepo=ol8_appstream update -y && \
-    microdnf install -y \
-        curl \
-        jq \
-        lsof \
-        ca-certificates \
-        openssl \
-        git \
-        tar \
-        sqlite \
-        fontconfig \
-        freetype \
-        tzdata \
-        iproute \
-        libstdc++ && \
-    microdnf clean all
+RUN         rm -rf /usr/bin/dd \
+						&& rm -rf /usr/bin/fallocate \
+						&& rm -rf /usr/bin/truncate \
+						&& rm -rf /usr/bin/xfs_mkfile
 
-# Grab MCAntiMalware
-RUN curl -sSL https://github.com/OpticFusion1/MCAntiMalware/releases/latest/download/MCAntiMalware.jar \
-         -o /MCAntiMalware.jar
+RUN         apt-get update -y \
+						&& apt-get install -y curl
 
-# Create unprivileged user
-RUN useradd -m -d /home/container container
+RUN         curl -sSL https://github.com/OpticFusion1/MCAntiMalware/releases/latest/download/MCAntiMalware.jar \
+						-o /MCAntiMalware.jar
+
+RUN 				apt-get install -y jq lsof ca-certificates openssl git tar sqlite3 fontconfig libfreetype6 tzdata iproute2 libstdc++6 \
+						&& useradd -d /home/container -m container
 
 USER        container
-ENV         HOME=/home/container
+ENV         USER=container HOME=/home/container
 WORKDIR     /home/container
 
 COPY        ./../entrypoint.sh /entrypoint.sh
-CMD         ["/bin/bash", "/entrypoint.sh"]
+CMD         [ "/bin/bash", "/entrypoint.sh" ]
