@@ -1,4 +1,4 @@
-FROM container-registry.oracle.com/graalvm/jdk:24
+FROM container-registry.oracle.com/graalvm/jdk:24-ol9
 
 # remove potential disk-filling tools
 RUN rm -f /usr/bin/dd /usr/bin/fallocate /usr/bin/truncate /usr/bin/xfs_mkfile
