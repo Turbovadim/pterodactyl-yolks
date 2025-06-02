@@ -263,14 +263,6 @@ if [[ "$OVERRIDE_STARTUP" == "1" ]]; then
 		fi
 	fi
 
-	if [[ "$MINEHUT_SUPPORT" == "Velocity" ]]; then
-		FLAGS+=("-Dmojang.sessionserver=https://api.minehut.com/mitm/proxy/session/minecraft/hasJoined")
-	elif [[ "$MINEHUT_SUPPORT" == "Waterfall" ]]; then
-		FLAGS+=("-Dwaterfall.auth.url=\"https://api.minehut.com/mitm/proxy/session/minecraft/hasJoined?username=%s&serverId=%s%s\")")
-	elif [[ "$MINEHUT_SUPPORT" = "Bukkit" ]]; then
-		FLAGS+=("-Dminecraft.api.auth.host=https://authserver.mojang.com/ -Dminecraft.api.account.host=https://api.mojang.com/ -Dminecraft.api.services.host=https://api.minecraftservices.com/ -Dminecraft.api.session.host=https://api.minehut.com/mitm/proxy")
-	fi
-
 	SERVER_MEMORY_REAL=$(($SERVER_MEMORY*$MAXIMUM_RAM/100))
 	PARSED="java ${FLAGS[*]} -Xms256M -Xmx${SERVER_MEMORY_REAL}M -jar ${SERVER_JARFILE} nogui"
 
