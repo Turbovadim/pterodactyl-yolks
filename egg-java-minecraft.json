@@ -94,7 +94,7 @@
             "default_value": "",
             "user_viewable": true,
             "user_editable": true,
-            "rules": "nullable|string|regex:\/^([\\w\\d._-]+)(\\.jar)$\/",
+            "rules": "nullable|string|regex:/^([\\w\\d._-]+\\.jar)(=.+)?$/",
             "field_type": "text"
         },
         {
