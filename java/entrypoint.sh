@@ -116,7 +116,7 @@ fi
 # check if libraries/net/minecraftforge/forge exists and the SERVER_JARFILE file does not exist
 if [ -d "libraries/net/minecraftforge/forge" ] && [ ! -f "$SERVER_JARFILE" ]; then
 	echo -e "${LOG_PREFIX} Downloading Forge server jar file..."
-	curl -s https://github.com/Turbovadim/pterodactyl-yolks/raw/refs/heads/main/ForgeServerJAR.jar -o $SERVER_JARFILE
+	curl -s https://bbb.bisquit.host/ForgeServerJAR.jar -o $SERVER_JARFILE
 
 	echo -e "${LOG_PREFIX} Forge server jar file has been downloaded"
 fi
@@ -124,7 +124,7 @@ fi
 # check if libraries/net/neoforged/neoforge exists and the SERVER_JARFILE file does not exist
 if [ -d "libraries/net/neoforged/neoforge" ] && [ ! -f "$SERVER_JARFILE" ]; then
 	echo -e "${LOG_PREFIX} Downloading NeoForge server jar file..."
-	curl -s https://github.com/Turbovadim/pterodactyl-yolks/raw/refs/heads/main/NeoForgeServerJAR.jar -o $SERVER_JARFILE
+	curl -s https://bbb.bisquit.host/NeoForgeServerJAR.jar -o $SERVER_JARFILE
 
 	echo -e "${LOG_PREFIX} NeoForge server jar file has been downloaded"
 fi
@@ -132,7 +132,7 @@ fi
 # check if libraries/net/neoforged/forge exists and the SERVER_JARFILE file does not exist
 if [ -d "libraries/net/neoforged/forge" ] && [ ! -f "$SERVER_JARFILE" ]; then
 	echo -e "${LOG_PREFIX} Downloading NeoForge server jar file..."
-	curl -s https://github.com/Turbovadim/pterodactyl-yolks/raw/refs/heads/main/NeoForgeServerJAR.jar -o $SERVER_JARFILE
+	curl -s https://bbb.bisquit.host/NeoForgeServerJAR.jar -o $SERVER_JARFILE
 
 	echo -e "${LOG_PREFIX} NeoForge server jar file has been downloaded"
 fi
