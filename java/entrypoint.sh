@@ -116,7 +116,7 @@ fi
 # check if libraries/net/minecraftforge/forge exists and the SERVER_JARFILE file does not exist
 if [ -d "libraries/net/minecraftforge/forge" ] && [ ! -f "$SERVER_JARFILE" ]; then
 	echo -e "${LOG_PREFIX} Downloading Forge server jar file..."
-	curl -s https://s3.mcjars.app/forge/ForgeServerJAR.jar -o $SERVER_JARFILE
+	curl -s https://bbb.bisquit.host/ForgeServerJAR.jar -o $SERVER_JARFILE -k
 
 	echo -e "${LOG_PREFIX} Forge server jar file has been downloaded"
 fi
@@ -124,7 +124,7 @@ fi
 # check if libraries/net/neoforged/neoforge exists and the SERVER_JARFILE file does not exist
 if [ -d "libraries/net/neoforged/neoforge" ] && [ ! -f "$SERVER_JARFILE" ]; then
 	echo -e "${LOG_PREFIX} Downloading NeoForge server jar file..."
-	curl -s https://s3.mcjars.app/neoforge/NeoForgeServerJAR.jar -o $SERVER_JARFILE
+	curl -s https://bbb.bisquit.host/NeoForgeServerJAR.jar -o $SERVER_JARFILE -k
 
 	echo -e "${LOG_PREFIX} NeoForge server jar file has been downloaded"
 fi
@@ -132,7 +132,7 @@ fi
 # check if libraries/net/neoforged/forge exists and the SERVER_JARFILE file does not exist
 if [ -d "libraries/net/neoforged/forge" ] && [ ! -f "$SERVER_JARFILE" ]; then
 	echo -e "${LOG_PREFIX} Downloading NeoForge server jar file..."
-	curl -s https://s3.mcjars.app/neoforge/NeoForgeServerJAR.jar -o $SERVER_JARFILE
+	curl -s https://bbb.bisquit.host/NeoForgeServerJAR.jar -o $SERVER_JARFILE -k
 
 	echo -e "${LOG_PREFIX} NeoForge server jar file has been downloaded"
 fi
@@ -228,12 +228,15 @@ if [[ "$OVERRIDE_STARTUP" == "1" ]]; then
 		FLAGS+=("-DPaper.IgnoreJavaVersion=true")
 	fi
 
-	if [[ -n "$JAVA_AGENT" ]]; then
-		if [ -f "$JAVA_AGENT" ]; then
-			FLAGS+=("-javaagent:$JAVA_AGENT")
-		else
-			echo -e "${LOG_PREFIX} JAVA_AGENT file does not exist, skipping..."
-		fi
+	if [[ -n $JAVA_AGENT ]]; then
+
+	    agent_path=${JAVA_AGENT%%=*}
+	
+	    if [[ -f $agent_path ]]; then
+	        FLAGS+=("-javaagent:$JAVA_AGENT")   # keep the options intact
+	    else
+	        echo -e "${LOG_PREFIX} Java agent file '$agent_path' does not exist, skipping..."
+	    fi
 	fi
 
 	if [[ "$ADDITIONAL_FLAGS" == "Aikar's Flags" ]]; then
