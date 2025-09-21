@@ -1,4 +1,4 @@
-FROM        --platform=$TARGETOS/$TARGETARCH eclipse-temurin:25-jdk
+FROM        --platform=$TARGETOS/$TARGETARCH azul/zulu-openjdk:25-latest
 
 LABEL       author="Robert Jansen" maintainer="rjansengd@gmail.com"
 
