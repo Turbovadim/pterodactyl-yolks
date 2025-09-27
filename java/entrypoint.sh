@@ -189,23 +189,6 @@ if [ -f "velocity.toml" ]; then
 	fi
 fi
 
-# config.yml
-if [ -f "config.yml" ]; then
-	# set query_port to SERVER_PORT
-	if grep -q "query_port" config.yml; then
-		sed -i "s/query_port: .*/query_port: ${SERVER_PORT}/" config.yml
-	else
-		echo "query_port: ${SERVER_PORT}" >> config.yml
-	fi
-
-	# set host to 0.0.0.0:SERVER_PORT
-	if grep -q "host" config.yml; then
-		sed -i "s/host: .*/host: 0.0.0.0:${SERVER_PORT}/" config.yml
-	else
-		echo "host: 0.0.0.0:${SERVER_PORT}" >> config.yml
-	fi
-fi
-
 if [[ "$OVERRIDE_STARTUP" == "1" ]]; then
 	FLAGS=("-Dterminal.jline=false -Dterminal.ansi=true")
 
