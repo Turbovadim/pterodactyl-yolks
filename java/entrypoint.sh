@@ -146,21 +146,21 @@ fi
 if [ -f "server.properties" ]; then
 	# set server-ip to 0.0.0.0
 	if grep -q "^[[:space:]]*server-ip=" server.properties; then
-		sed -i "s/^\([[:space:]]*\)server-ip=.*/\1server-ip=0.0.0.0/" server.properties
+		sed -i "s/^[[:space:]]*server-ip=.*/server-ip=0.0.0.0/" server.properties
 	else
 		printf "\nserver-ip=0.0.0.0\n" >> server.properties
 	fi
 
 	# set server-port to SERVER_PORT
 	if grep -q "^[[:space:]]*server-port=" server.properties; then
-		sed -i "s/^\([[:space:]]*\)server-port=.*/\1server-port=${SERVER_PORT}/" server.properties
+		sed -i "s/^[[:space:]]*server-port=.*/server-port=${SERVER_PORT}/" server.properties
 	else
 		printf "\nserver-port=%s\n" "${SERVER_PORT}" >> server.properties
 	fi
 
 	# set query.port to SERVER_PORT
 	if grep -q "^[[:space:]]*query\.port=" server.properties; then
-		sed -i "s/^\([[:space:]]*\)query\.port=.*/\1query.port=${SERVER_PORT}/" server.properties
+		sed -i "s/^[[:space:]]*query\.port=.*/query.port=${SERVER_PORT}/" server.properties
 	else
 		printf "\nquery.port=%s\n" "${SERVER_PORT}" >> server.properties
 	fi
@@ -170,12 +170,12 @@ fi
 if [ -f "settings.yml" ]; then
 	# set ip to 0.0.0.0
 	if grep -q "^[[:space:]]*ip:" settings.yml; then
-		sed -i "s/^\([[:space:]]*\)ip:[[:space:]]*.*/\1ip: '0.0.0.0'/" settings.yml
+		sed -i "s/^[[:space:]]*ip:[[:space:]]*.*/ip: '0.0.0.0'/" settings.yml
 	fi
 
 	# set port to SERVER_PORT
 	if grep -q "^[[:space:]]*port:" settings.yml; then
-		sed -i "s/^\([[:space:]]*\)port:[[:space:]]*.*/\1port: ${SERVER_PORT}/" settings.yml
+		sed -i "s/^[[:space:]]*port:[[:space:]]*.*/port: ${SERVER_PORT}/" settings.yml
 	fi
 fi
 
@@ -183,7 +183,7 @@ fi
 if [ -f "velocity.toml" ]; then
 	# set bind to 0.0.0.0:SERVER_PORT
 	if grep -q "^[[:space:]]*bind[[:space:]]*=" velocity.toml; then
-		sed -i "s/^\([[:space:]]*\)bind[[:space:]]*=.*/\1bind = \"0.0.0.0:${SERVER_PORT}\"/" velocity.toml
+		sed -i "s/^[[:space:]]*bind[[:space:]]*=.*/bind = \"0.0.0.0:${SERVER_PORT}\"/" velocity.toml
 	else
 		printf "\nbind = \"%s:%s\"\n" "0.0.0.0" "${SERVER_PORT}" >> velocity.toml
 	fi
@@ -193,14 +193,14 @@ fi
 if [ -f "config.yml" ]; then
 	# set query_port to SERVER_PORT
 	if grep -q "^[[:space:]]*query_port:" config.yml; then
-		sed -i "s/^\([[:space:]]*\)query_port:[[:space:]]*.*/\1query_port: ${SERVER_PORT}/" config.yml
+		sed -i "s/^[[:space:]]*query_port:[[:space:]]*.*/query_port: ${SERVER_PORT}/" config.yml
 	else
 		printf "\nquery_port: %s\n" "${SERVER_PORT}" >> config.yml
 	fi
 
 	# set host to 0.0.0.0:SERVER_PORT
 	if grep -q "^[[:space:]]*host:" config.yml; then
-		sed -i "s/^\([[:space:]]*\)host:[[:space:]]*.*/\1host: \"0.0.0.0:${SERVER_PORT}\"/" config.yml
+		sed -i "s/^[[:space:]]*host:[[:space:]]*.*/host: \"0.0.0.0:${SERVER_PORT}\"/" config.yml
 	else
 		printf "\nhost: \"%s:%s\"\n" "0.0.0.0" "${SERVER_PORT}" >> config.yml
 	fi
