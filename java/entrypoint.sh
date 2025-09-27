@@ -145,64 +145,47 @@ fi
 
 if [ -f "server.properties" ]; then
 	# set server-ip to 0.0.0.0
-	if grep -q "^[[:space:]]*server-ip=" server.properties; then
-		sed -i "s/^[[:space:]]*server-ip=.*/server-ip=0.0.0.0/" server.properties
+	if grep -q "server-ip=" server.properties; then
+		sed -i 's/server-ip=.*/server-ip=0.0.0.0/' server.properties
 	else
-		printf "\nserver-ip=0.0.0.0\n" >> server.properties
+		echo "server-ip=0.0.0.0" >> server.properties
 	fi
 
 	# set server-port to SERVER_PORT
-	if grep -q "^[[:space:]]*server-port=" server.properties; then
-		sed -i "s/^[[:space:]]*server-port=.*/server-port=${SERVER_PORT}/" server.properties
+	if grep -q "server-port=" server.properties; then
+		sed -i "s/server-port=.*/server-port=${SERVER_PORT}/" server.properties
 	else
-		printf "\nserver-port=%s\n" "${SERVER_PORT}" >> server.properties
+		echo "server-port=${SERVER_PORT}" >> server.properties
 	fi
 
 	# set query.port to SERVER_PORT
-	if grep -q "^[[:space:]]*query\.port=" server.properties; then
-		sed -i "s/^[[:space:]]*query\.port=.*/query.port=${SERVER_PORT}/" server.properties
+	if grep -q "query.port=" server.properties; then
+		sed -i "s/query.port=.*/query.port=${SERVER_PORT}/" server.properties
 	else
-		printf "\nquery.port=%s\n" "${SERVER_PORT}" >> server.properties
+		echo "query.port=${SERVER_PORT}" >> server.properties
 	fi
 fi
 
 # settings.yml
 if [ -f "settings.yml" ]; then
 	# set ip to 0.0.0.0
-	if grep -q "^[[:space:]]*ip:" settings.yml; then
-		sed -i "s/^[[:space:]]*ip:[[:space:]]*.*/ip: '0.0.0.0'/" settings.yml
+	if grep -q "ip" settings.yml; then
+		sed -i "s/ip: .*/ip: '0.0.0.0'/" settings.yml
 	fi
 
 	# set port to SERVER_PORT
-	if grep -q "^[[:space:]]*port:" settings.yml; then
-		sed -i "s/^[[:space:]]*port:[[:space:]]*.*/port: ${SERVER_PORT}/" settings.yml
+	if grep -q "port" settings.yml; then
+		sed -i "s/port: .*/port: ${SERVER_PORT}/" settings.yml
 	fi
 fi
 
 # velocity.toml
 if [ -f "velocity.toml" ]; then
 	# set bind to 0.0.0.0:SERVER_PORT
-	if grep -q "^[[:space:]]*bind[[:space:]]*=" velocity.toml; then
-		sed -i "s/^[[:space:]]*bind[[:space:]]*=.*/bind = \"0.0.0.0:${SERVER_PORT}\"/" velocity.toml
+	if grep -q "bind" velocity.toml; then
+		sed -i "s/bind = .*/bind = \"0.0.0.0:${SERVER_PORT}\"/" velocity.toml
 	else
-		printf "\nbind = \"%s:%s\"\n" "0.0.0.0" "${SERVER_PORT}" >> velocity.toml
-	fi
-fi
-
-# config.yml
-if [ -f "config.yml" ]; then
-	# set query_port to SERVER_PORT
-	if grep -q "^[[:space:]]*query_port:" config.yml; then
-		sed -i "s/^[[:space:]]*query_port:[[:space:]]*.*/query_port: ${SERVER_PORT}/" config.yml
-	else
-		printf "\nquery_port: %s\n" "${SERVER_PORT}" >> config.yml
-	fi
-
-	# set host to 0.0.0.0:SERVER_PORT
-	if grep -q "^[[:space:]]*host:" config.yml; then
-		sed -i "s/^[[:space:]]*host:[[:space:]]*.*/host: \"0.0.0.0:${SERVER_PORT}\"/" config.yml
-	else
-		printf "\nhost: \"%s:%s\"\n" "0.0.0.0" "${SERVER_PORT}" >> config.yml
+		echo "bind = \"0.0.0.0:${SERVER_PORT}\"" >> velocity.toml
 	fi
 fi
 
